@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import BoardView from '../views/BoardView.vue'
 
 Vue.use(VueRouter)
 
@@ -11,7 +10,14 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'board',
-      component: BoardView
+      component: () => import('../views/BoardView.vue'),
+      children: [
+        {
+          path: 'task/:id',
+          name: 'task',
+          component: () => import('../views/TaskView.vue'),
+        }
+      ]
     },
   ]
 })
