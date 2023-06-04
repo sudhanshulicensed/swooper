@@ -26,10 +26,16 @@
               {{ task.description }}
             </p>
           </div>
+          <input
+            type="text"
+            class="block p-2 w-full bg-transparent"
+            placeholder="+ Enter new Task"
+            @keyup.enter="createTask($event, column.tasks)"
+          />
         </div>
       </div>
     </div>
-    <div v-if="isTaskOpen" class="task-bg" @click="close">
+    <div v-if="isTaskOpen" class="task-bg">
       <router-view />
     </div>
   </div>
@@ -48,8 +54,12 @@ export default {
     goToTask(task) {
       this.$router.push({ name: "task", params: { id: task.id } });
     },
-    close() {
-      this.$router.push({ name: "board" });
+    createTask(event, tasks) {
+      this.$store.commit("CREATE_TASK", {
+        tasks,
+        name: event.target.value,
+      });
+      event.target.value = "";
     },
   },
 };
