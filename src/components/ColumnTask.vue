@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex items-center flex-wrap shadow mb-2 py-2 px-2 rounded bg-white text-gray-700 no-underline"
+    class="flex items-center flex-wrap shadow mb-2 py-2 px-2 rounded bg-white hover:bg-gray-100 cursor-pointer text-gray-700 no-underline"
     draggable
     @dragstart="pickupTask($event, taskIndex, columnIndex)"
     @click="goToTask(task)"
