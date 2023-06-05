@@ -22,7 +22,7 @@
       />
       <input
         type="text"
-        class="block p-2 w-full bg-transparent"
+        class="block hover:bg-green-100 cursor-pointer p-2 w-full bg-transparent"
         placeholder="+ Enter new Task"
         @keyup.enter="createTask($event, column.tasks)"
       />
